@@ -6,7 +6,7 @@ import moment from 'moment';
 const Header = () => {
     
     return (
-        <div className='flex flex-col gap-2 items-center justify-center'>
+        <div className='py-5 flex flex-col gap-2 items-center justify-center'>
             <div>
                 <img className='w-[300px]' src={logo} alt="" />
             </div>
