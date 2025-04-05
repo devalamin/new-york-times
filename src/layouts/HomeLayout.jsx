@@ -3,6 +3,7 @@ import Header from '../components/Header/Header';
 import LatestNews from '../components/LatestNews';
 import Navbar from '../components/Navbar';
 import LeftNavbar from '../components/layout-components/LeftNavbar';
+import RightNavbar from '../components/layout-components/RightNavbar';
 
 const HomeLayout = () => {
 
@@ -23,12 +24,15 @@ const HomeLayout = () => {
             <main>
                 <div className='w-11/12 mx-auto grid grid-cols-12'>
                     <aside className='col-span-3'>
-                        <Suspense fallback={<span className="loading loading-infinity loading-xl"></span>}>
+                        <Suspense fallback={<div className='flex justify-center'><span className="loading loading-infinity loading-xl"></span></div>}>
                             <LeftNavbar categoriesPromise={categoriesPromise}></LeftNavbar>
                         </Suspense>
                     </aside>
                     <section className='col-span-6'>Main content</section>
-                    <aside className='col-span-3'>right navbar</aside>
+                    <aside className='col-span-3'>
+
+                        <RightNavbar></RightNavbar>
+                    </aside>
                 </div>
             </main>
         </div>
