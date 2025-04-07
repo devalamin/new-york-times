@@ -15,24 +15,20 @@ const Register = () => {
         const email = formdata.get('email')
         const password = formdata.get('password')
 
-        const profile = {
-            displayName: name,
-            photoURL: photo
-        }
+        // const profile = {
+        //     displayName: name,
+        //     photoURL: photo
+        // }
         createUser(email, password)
             .then(result => {
                 console.log(result.user)
                 const createdUser = result.user;
+                setUser(createdUser)
 
-                updateUserData(profile)
+                updateUserData({ displayName: name, photoURL: photo })
                     .then(() => {
-                        console.log('profile updated');
-                        const updatedUser = {
-                            ...createdUser,
-                            displayName: profile.displayName,
-                            photoURL: profile.photoURL
-                        }
-                        setUser(updatedUser)
+
+                        console.log('updated');
                     })
                     .catch(err => {
                         console.log(err);
