@@ -30,7 +30,9 @@ const HomeLayout = () => {
                         </Suspense>
                     </aside>
                     <section className='col-span-6'>
-                        <Outlet></Outlet>
+                        <Suspense fallback={<p>News Loading...</p>}>
+                            <Outlet></Outlet>
+                        </Suspense>
                     </section>
                     <aside className='col-span-3'>
 

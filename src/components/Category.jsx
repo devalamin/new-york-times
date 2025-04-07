@@ -4,21 +4,23 @@ import { FaStar } from 'react-icons/fa';
 import { FaEye } from 'react-icons/fa6';
 import { IoSaveOutline, IoShareSocialSharp } from 'react-icons/io5';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 
 const Category = ({ category }) => {
-    const { details, image_url, thumbnail_url, title, total_view } = category;
+    const { details, _id, image_url, thumbnail_url, title, total_view } = category;
 
     const author = category.author;
     const rating = category.rating;
     const { badge, number } = rating;
     const { name, img, published_date } = author;
 
-    const [isExpanded, setIsExpanded] = useState(false);
-    const toggleExpand = () => setIsExpanded(!isExpanded);
+    const seeMore = <>
+        <Link>See</Link>
+    </>
 
-    const maxLength = 150;
+    // const displayText = isExpanded ? details : `${details.slice(0, maxLength)}${details.length > maxLength ? '...' : ''}`;
 
-    const displayText = isExpanded ? details : `${details.slice(0, maxLength)}${details.length > maxLength ? '...' : ''}`;
+    const displayText = details.length > 150 ? details.slice(0, 150) : details
 
     return (
         <div className='mb-10 bg-slate-50 p-2'>
@@ -47,11 +49,10 @@ const Category = ({ category }) => {
                 {/* Collapsible text */}
                 <p className="my-2 text-gray-800">
                     {displayText}
-                    {details.length > maxLength && (
-                        <button onClick={toggleExpand} className="text-blue-600 ml-1 hover:underline">
-                            {isExpanded ? 'See less' : 'See more'}
-                        </button>
-                    )}
+                    {
+                        displayText.length == 150 ? <Link to={`/news/${_id}`} className='text-blue-500 cursor-alias'>...See More</Link> : ''
+                    }
+
                 </p>
 
                 <div className='bg-slate-100 py-3 px-1 flex justify-between items-center'>

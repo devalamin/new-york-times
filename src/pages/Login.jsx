@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext)
 
+    const navigate = useNavigate()
     const handleLogin = (e) => {
         e.preventDefault()
         const formInfo = new FormData(e.target)
@@ -13,9 +14,10 @@ const Login = () => {
         const password = formInfo.get('password')
         loginUser(email, password)
             .then(result => {
+                navigate('/')
                 console.log(result);
             })
-            .catch(error=>{
+            .catch(error => {
                 console.log(error);
             })
     }
