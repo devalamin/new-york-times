@@ -21,7 +21,7 @@ const Category = ({ category }) => {
     const displayText = isExpanded ? details : `${details.slice(0, maxLength)}${details.length > maxLength ? '...' : ''}`;
 
     return (
-        <div className='mb-10'>
+        <div className='mb-10 bg-slate-50 p-2'>
             <div className='p-2 flex justify-between bg-slate-100 my-1'>
                 <div className='flex space-x-2'>
                     <div>
